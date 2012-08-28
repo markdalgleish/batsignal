@@ -31,7 +31,7 @@ if (Meteor.is_client) {
 	};
 
 	Template.main.inputClassName = function() {
-		return getMessage() && getMessage().isRead ? 'read' : 'unread';
+		return !getMessage() || getMessage().isRead ? 'read' : 'unread';
 	};
 
 	Template.main.events = {
