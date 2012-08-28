@@ -21,14 +21,18 @@ body {
 }
 .message.unread {
 	background-color: red;
-	color: white
+	color: white;
+	text-shadow: 1px 1px 5px black;
 }
 .message.read {
 	background-color: #319431;
 	color: #42AC42;
+	text-shadow: 1px 1px 5px rgba(0,0,0,0.75);
 }
 
 .input-container {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border-top: 0px solid #404040;
 	background-color: white;
 	position: absolute;
 	z-index: 1;
@@ -41,13 +45,23 @@ body {
 	display: none;
 }
 #text {
+	background: none;
+	border: 0;
 	position: absolute;
-	left: 0;
+	height: 50px;
+	bottom: 0;
+	left: -5px;
 	font-size: 34px;
-	width: 100%;
+	right: -5px;
+	padding-left: 10px;
 }
 .input-container button {
+	border: 0;
 	font-size: 34px;
+	color: white;
+	background: #404040;
 	position: absolute;
 	right: 0;
+	width: 180px;
+	height: 50px;
 }
