@@ -1,6 +1,6 @@
-var Messages = new Meteor.Collection('messages');
+var messages = new Meteor.Collection('messages');
 
-Messages.add = function(message) {
+messages.add = function(message) {
 	if (typeof message === 'string') {
 		this.insert({message: message, isRead: false});
 		return true;
@@ -10,7 +10,7 @@ Messages.add = function(message) {
 
 if (Meteor.is_server) {
 	Meteor.publish('messages', function() {
-		return Messages.find({}, {sort: {$natural: -1}, limit: 1});
+		return messages.find({}, {sort: {$natural: -1}, limit: 1});
 	});
 }
 
@@ -19,15 +19,15 @@ if (Meteor.is_client) {
 
 	var submit = function() {
 		var textbox = document.getElementById('text');
-		if (Messages.add(textbox.value)) textbox.value = '';
+		if (messages.add(textbox.value)) textbox.value = '';
 	};
 
 	var getMessage = function() {
-		return Messages.findOne({});
+		return messages.findOne({});
 	};
 	
 	Template.main.messages = function() {
-		return Messages.find({});
+		return messages.find({});
 	};
 
 	Template.main.inputClassName = function() {
@@ -47,7 +47,7 @@ if (Meteor.is_client) {
 
 	Template.message.events = {
 		'click' : function() {
-			Messages.update(this, {$set: {isRead: true}});
+			messages.update(this, {$set: {isRead: true}});
 		}
 	};
 }
