@@ -3,6 +3,17 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+@-webkit-keyframes throb {
+	from {
+		background-color: #F83F26;
+	}
+
+	to {
+		background-color: #E01B00;
+	}
+}
+
 body {
 	overflow: hidden;
 	background-color: #418F41;
@@ -22,13 +33,17 @@ body {
 	padding: 40px;
 }
 .message.unread {
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: throb;
+	-webkit-animation-direction: alternate;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
 	background-color: #F83F26;
 	color: #FAAFA4;
 }
 .message.read {
 	color: #52A352;
 }
-
 .input-container {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	border-top: 0px solid #404040;
@@ -43,7 +58,7 @@ body {
 .input-container.unread {
 	display: none;
 }
-#text {
+#textbox {
 	color: #404040;
 	background: #E0E0E0;
 	border: 0;
@@ -52,7 +67,7 @@ body {
 	bottom: 0;
 	left: -5px;
 	font-size: 34px;
-	right: -5px;
+	right: 180px;
 	padding-left: 10px;
 }
 .input-container button {
