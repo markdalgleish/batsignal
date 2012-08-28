@@ -11,13 +11,13 @@ body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
+	right: 0;
 	height: 100%;
 	font-size: 170px;
 	font-weight: bold;
 	text-align: center;
 	font-family: georgia;
-	padding: 40px;
+	padding: 80px;
 }
 .message.unread {
 	background-color: red;
