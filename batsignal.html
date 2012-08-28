@@ -7,13 +7,13 @@
 </body>
 
 <template name="main">
-	<div id="messages">
+	<div id="messages" title="Click to mark message as read">
 		{{#each messages}}
 			{{>message}}
 		{{/each}}
 	</div>
 
-	<div class="input-container">
+	<div class="input-container {{inputClassName}}">
 		<input type="text" placeholder="Enter a message..." id="text" /><button>Submit</button>
 	</div>
 </template>

@@ -28,6 +28,10 @@ if (Meteor.is_client) {
     return Messages.find({});
   };
 
+  Template.main.inputClassName = function() {
+    return Messages.findOne({}) && Messages.findOne({}).isRead ? 'read' : 'unread';
+  };
+
   Template.main.events = {
     'click button': function () {
       submit();

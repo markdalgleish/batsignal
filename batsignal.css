@@ -1,3 +1,8 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
 body {
 	overflow: hidden;
 }
@@ -12,14 +17,14 @@ body {
 	font-weight: bold;
 	text-align: center;
 	font-family: georgia;
-	padding-top: 40px;
+	padding: 40px;
 }
 .message.unread {
 	background-color: red;
 	color: white
 }
 .message.read {
-	background-color: green;
+	background-color: #319431;
 	color: #42AC42;
 }
 
@@ -31,6 +36,9 @@ body {
 	left: 0;
 	height: 50px;
 	width: 100%;
+}
+.input-container.unread {
+	display: none;
 }
 #text {
 	position: absolute;
