@@ -1,8 +1,8 @@
 messages = new Meteor.Collection 'messages'
 
-messages.add = (message) ->
-	if typeof message is 'string' and message.length < 100
-		@insert message: message, isRead: false
+messages.isValid = (message) -> typeof message is 'string' and message.length < 50
+
+messages.add = (message) -> if @isValid message then @insert message: message, isRead: false
 
 if Meteor.is_server
 	Meteor.publish 'messages', ->
@@ -11,7 +11,7 @@ if Meteor.is_server
 			limit: 1
 else
 	Meteor.subscribe 'messages'
-
+	
 	getMessage = -> messages.findOne {}
 
 	isRead = -> not getMessage() or getMessage().isRead
