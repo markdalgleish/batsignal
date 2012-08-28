@@ -1,0 +1,23 @@
+<head>
+  <title>Bat Signal</title>
+</head>
+
+<body>
+	{{> main}}
+</body>
+
+<template name="main">
+	<div id="messages">
+		{{#each messages}}
+			{{>message}}
+		{{/each}}
+	</div>
+
+	<div class="input-container">
+		<input type="text" placeholder="Enter a message..." id="text" /><button>Submit</button>
+	</div>
+</template>
+
+<template name="message">
+	<div class="message {{className}}">{{message}}</div>
+</template>

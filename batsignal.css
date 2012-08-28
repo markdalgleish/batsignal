@@ -1,0 +1,41 @@
+.message {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 170px;
+	font-weight: bold;
+	text-align: center;
+	font-family: georgia;
+	padding-top: 40px;
+}
+.message.unread {
+	background-color: red;
+	color: white
+}
+.message.read {
+	background-color: green;
+	color: #42AC42;
+}
+
+.input-container {
+	background-color: white;
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+	height: 50px;
+	width: 100%;
+}
+#text {
+	position: absolute;
+	left: 0;
+	font-size: 34px;
+	width: 100%;
+}
+.input-container button {
+	font-size: 34px;
+	position: absolute;
+	right: 0;
+}
