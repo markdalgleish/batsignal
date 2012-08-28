@@ -1,7 +1,7 @@
 messages = new Meteor.Collection 'messages'
 
 messages.add = (message) ->
-	if typeof message is 'string'
+	if typeof message is 'string' and message.length < 100
 		@insert message: message, isRead: false
 
 if Meteor.is_server
@@ -20,14 +20,13 @@ else
 		textbox = document.getElementById 'textbox'
 		if isRead() and messages.add textbox.value then textbox.value = ''
 
-	Template.main.messages = -> messages.find {}
+	_.extend Template.main,
+		messages: -> messages.find {}
+		inputClassName: -> if isRead() then 'read' else 'unread'
+		events:
+			'click button': addMessage
+			'keypress input': (e) -> addMessage() if e.which is 13
 
-	Template.main.inputClassName = -> if isRead() then 'read' else 'unread'
-
-	Template.main.events =
-		'click button': addMessage
-		'keypress input': (e) -> addMessage() if e.which is 13
-
-	Template.message.className = -> if @isRead then 'read' else 'unread'
-
-	Template.message.events = click: -> messages.update this, $set: isRead: true
+	_.extend Template.message,
+		className: -> if @isRead then 'read' else 'unread'
+		events: click: -> messages.update this, $set: isRead: true
