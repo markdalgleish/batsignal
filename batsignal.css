@@ -5,6 +5,7 @@
 }
 body {
 	overflow: hidden;
+	background-color: #418F41;
 }
 .message {
 	cursor: pointer;
@@ -25,7 +26,6 @@ body {
 	color: #FAAFA4;
 }
 .message.read {
-	background-color: #418F41;
 	color: #52A352;
 }
 
