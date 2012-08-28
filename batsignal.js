@@ -24,7 +24,7 @@ if (Meteor.is_client) {
 
 	var getMessage = function() {
 		return Messages.findOne({});
-	}
+	};
 	
 	Template.main.messages = function() {
 		return Messages.find({});
