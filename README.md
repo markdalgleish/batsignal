@@ -1,6 +1,6 @@
 # batsignal
 
-Help radiator for cross-continental agile teams. Built using Meteor.
+Help radiator for remote agile teams. Built using Meteor.
 
 ## License
 Copyright (c) 2012 Mark Dalgleish  
