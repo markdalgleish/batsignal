@@ -17,17 +17,16 @@ body {
 	font-weight: bold;
 	text-align: center;
 	font-family: georgia;
+	text-shadow: 1px 1px 5px rgba(0,0,0,0.75);
 	padding: 40px;
 }
 .message.unread {
-	background-color: red;
-	color: white;
-	text-shadow: 1px 1px 5px black;
+	background-color: #F83F26;
+	color: #FAAFA4;
 }
 .message.read {
 	background-color: #319431;
 	color: #42AC42;
-	text-shadow: 1px 1px 5px rgba(0,0,0,0.75);
 }
 
 .input-container {
