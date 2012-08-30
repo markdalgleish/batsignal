@@ -44,6 +44,24 @@ body {
 .message.read {
 	color: #52A352;
 }
+.message.read .batman {
+	display: none;
+}
+.message.unread .text {
+	position: relative;
+	z-index: 1;
+}
+.message.unread .batman {
+	position: absolute;
+	top: 50px;
+	bottom: 50px;
+	left: 50px;
+	right: 50px;
+	opacity: 0.2;
+}
+.message.unread .batman g {
+	box-shadow: 0 0 100px white;
+}
 .input-container {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	border-top: 0px solid #404040;
