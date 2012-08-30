@@ -6,11 +6,11 @@
 
 @-webkit-keyframes throb {
 	from {
-		background-color: #F83F26;
+		background-color: #000;
 	}
 
 	to {
-		background-color: #E01B00;
+		background-color: #303030;
 	}
 }
 
@@ -39,7 +39,7 @@ body {
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
 	background-color: #F83F26;
-	color: #FAAFA4;
+	color: #CEC021;
 }
 .message.read {
 	color: #52A352;
@@ -57,10 +57,10 @@ body {
 	bottom: 50px;
 	left: 50px;
 	right: 50px;
-	opacity: 0.2;
+	opacity: 1;
 }
-.message.unread .batman g {
-	box-shadow: 0 0 100px white;
+.message.unread .batman path {
+	background: blue;
 }
 .input-container {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
