@@ -1,18 +1,19 @@
 messages = new Meteor.Collection 'messages'
 
+allMessages = messages.find {}
+
+latestMessage = messages.find {}, { sort: { $natural: -1 }, limit: 1 }
+
 messages.isValid = (message) -> typeof message is 'string' and message.length < 50
 
 messages.add = (message) -> if @isValid message then @insert message: message, isRead: false
 
 if Meteor.is_server
-	Meteor.publish 'messages', ->
-		messages.find {},
-			sort: $natural: -1
-			limit: 1
+	Meteor.publish 'messages', -> latestMessage
 else
 	Meteor.subscribe 'messages'
 
-	messages.find({}).observe added: (msg) -> if not msg.isRead then speak msg.message, speed: 140, amplitude: 200, pitch: 30, wordgap: 10
+	allMessages.observe added: (msg) -> if not msg.isRead then speak msg.message, speed: 140, amplitude: 200, pitch: 30, wordgap: 10
 	
 	getMessage = -> messages.findOne {}
 
@@ -23,7 +24,7 @@ else
 		if isRead() and messages.add textbox.value then textbox.value = ''
 
 	_.extend Template.main,
-		messages: -> messages.find {}
+		messages: -> allMessages
 		inputClassName: -> if isRead() then 'read' else 'unread'
 		events:
 			'click button': addMessage
