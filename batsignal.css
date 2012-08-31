@@ -16,7 +16,7 @@
 
 body {
 	overflow: hidden;
-	background-color: #000;
+	background-color: #fff;
 }
 .message {
 	cursor: pointer;
@@ -42,7 +42,7 @@ body {
 	color: #CEC021;
 }
 .message.read {
-	color: #303030;
+	color: #e0e0e0;
 }
 .message.read .batman {
 	display: none;
