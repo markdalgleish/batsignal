@@ -11,6 +11,8 @@ if Meteor.is_server
 			limit: 1
 else
 	Meteor.subscribe 'messages'
+
+	messages.find({}).observe added: (msg) -> speak msg.message, speed: 140, amplitude: 200, pitch: 30, wordgap: 10
 	
 	getMessage = -> messages.findOne {}
 
