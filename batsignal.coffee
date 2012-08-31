@@ -12,7 +12,7 @@ if Meteor.is_server
 else
 	Meteor.subscribe 'messages'
 
-	messages.find({}).observe added: (msg) -> speak msg.message, speed: 140, amplitude: 200, pitch: 30, wordgap: 10
+	messages.find({}).observe added: (msg) -> if not msg.isRead then speak msg.message, speed: 140, amplitude: 200, pitch: 30, wordgap: 10
 	
 	getMessage = -> messages.findOne {}
 
