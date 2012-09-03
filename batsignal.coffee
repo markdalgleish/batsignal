@@ -4,7 +4,7 @@ allMessages = messages.find {}
 
 latestMessage = messages.find {}, { sort: { $natural: -1 }, limit: 1 }
 
-messages.isValid = (message) -> typeof message is 'string' and message.length < 50
+messages.isValid = (message) -> typeof message is 'string' and message.length <= 70
 
 messages.add = (message) -> if @isValid message then @insert message: message, isRead: false
 
