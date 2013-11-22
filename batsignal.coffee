@@ -8,13 +8,18 @@ messages.isValid = (message) -> typeof message is 'string' and message.length <=
 
 messages.add = (message) -> if @isValid message then @insert message: message, isRead: false
 
-if Meteor.is_server
+messages.allow
+  insert: (userId, doc) ->
+    true
+
+if Meteor.isServer
 	Meteor.publish 'messages', -> latestMessage
-else
+
+if Meteor.isClient
 	Meteor.subscribe 'messages'
 
 	allMessages.observe added: (msg) -> if not msg.isRead then speak msg.message, speed: 140, pitch: 30, wordgap: 10
-	
+
 	getMessage = -> messages.findOne {}
 
 	isRead = -> not getMessage() or getMessage().isRead
