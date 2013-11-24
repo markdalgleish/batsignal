@@ -8,13 +8,22 @@ messages.isValid = (message) -> typeof message is 'string' and message.length <=
 
 messages.add = (message) -> if @isValid message then @insert message: message, isRead: false
 
-if Meteor.is_server
+messages.allow
+  insert: (userId, doc) -> true
+  update: (userId, doc, fields, modifier) -> true
+  remove: (userId, doc) -> true
+
+if Meteor.isServer
 	Meteor.publish 'messages', -> latestMessage
-else
+
+if Meteor.isClient
+	window.messages = messages
+	window.latestMessage = latestMessage
+
 	Meteor.subscribe 'messages'
 
 	allMessages.observe added: (msg) -> if not msg.isRead then speak msg.message, speed: 140, pitch: 30, wordgap: 10
-	
+
 	getMessage = -> messages.findOne {}
 
 	isRead = -> not getMessage() or getMessage().isRead
@@ -32,4 +41,4 @@ else
 
 	_.extend Template.message,
 		className: -> if @isRead then 'read' else 'unread'
-		events: click: -> messages.update this, $set: isRead: true
+		events: click: -> messages.update @_id, $set: isRead: true
