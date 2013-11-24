@@ -21,5 +21,5 @@ $ meteor deploy my-batsignal-instance.meteor.com
 ```
 
 ## License
-Copyright (c) 2012 Mark Dalgleish  
+Copyright (c) 2013 Mark Dalgleish  
 Licensed under the MIT license.
